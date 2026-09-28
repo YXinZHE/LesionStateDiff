@@ -91,23 +91,3 @@ The exact learning-rate lineage is recorded in
 [`configs/training_schedule.yaml`](configs/training_schedule.yaml). Full CLI
 examples are in [`docs/TRAINING.md`](docs/TRAINING.md).
 
-## Data and checkpoints
-
-No clinical data or checkpoints are included. Prepare a patient-separated
-training manifest following [`docs/DATA_FORMAT.md`](docs/DATA_FORMAT.md).
-Every training command requires the expected SHA256 of its parent checkpoint.
-
-## Reproducibility boundaries
-
-- Training scripts reject paths with a `test` path component.
-- The manifest records whether a held-out test sample was used and fails if
-  `fold1_test_used=true`.
-- Checkpoint loaders validate architecture and SHA256 values.
-- Checkpoint selection is not automated from test-set performance.
-
-## License and citation
-
-No open-source license is assigned in this package because repository owners
-must first confirm the licensing obligations of all upstream code and data.
-Before public release, add an approved `LICENSE` and complete
-`CITATION.cff.template`.
