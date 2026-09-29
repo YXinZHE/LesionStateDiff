@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the LesionStateDiff paper."
+title: "LesionStateDiff: Spatial-Semantic Diffusion for Controllable IVOCT Lesion Resynthesis"
+type: software
+authors:
+  - family-names: "TODO"
+    given-names: "TODO"
+version: 0.1.0
+date-released: 2026-09-22
+repository-code: "TODO"
+preferred-citation:
+  type: conference-paper
+  title: "TODO"
+  authors:
+    - family-names: "TODO"
+      given-names: "TODO"
+  conference: "TODO"
+  year: 2026
+

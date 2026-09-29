@@ -1,0 +1,55 @@
+seed: 3
+image_size: 750
+padded_size: 768
+num_train_timesteps: 1000
+sampling:
+  algorithm: DDIM
+  steps: 25
+
+stages:
+  baseline:
+    initial_lr: 2.5e-7
+    scheduler: cosine_to_zero
+    optimizer: AdamW
+    optimizer_steps: 10000
+
+  lsdm_initial:
+    unet_lr: 1.0e-5
+    scheduler: cosine_to_zero
+    epochs: 20
+    batch_size: 4
+    samples_per_epoch: 4000
+
+  lsdm_refinement:
+    unet_lr: 3.0e-6
+    scheduler: cosine_to_zero
+    epochs: 10
+    batch_size: 5
+    samples_per_epoch: 4000
+
+  lsdm_constant:
+    unet_lr: 1.0e-6
+    scheduler: constant
+    epochs: 5
+    batch_size: 5
+    samples_per_epoch: 8000
+    selected_checkpoint_epoch: 4
+    region_time_trainable_parameters: 0
+
+  psc_initial:
+    unet_lr: 5.0e-7
+    semantic_lr: 5.0e-5
+    scheduler: constant
+    epochs: 5
+    batch_size: 5
+    samples_per_epoch: 8000
+    refinement_parent_epoch: 3
+
+  psc_refinement:
+    unet_lr: 1.0e-7
+    semantic_lr: 1.0e-5
+    scheduler: constant
+    epochs: 5
+    batch_size: 5
+    samples_per_epoch: 8000
+
